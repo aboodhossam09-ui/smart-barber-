@@ -1,0 +1,26 @@
+/* Login specific styles */
+.login-wrapper {
+  height: 100vh; display: flex; justify-content: center; align-items: center;
+  background: url('images/login-bg.jpg') center/cover;
+}
+.login-container {
+  width: 100%; max-width: 400px; padding: 2.5rem; border-radius: 12px;
+  text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.login-container h2 { color: var(--gold-primary); margin-bottom: 1.5rem; font-family: var(--font-heading); }
+.text-center { text-align: center; }
+.mb-2 { margin-bottom: 2rem; }
+.input-group { text-align: right; margin-bottom: 1.2rem; }
+[dir="ltr"] .input-group { text-align: left; }
+.input-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.95rem; }
+.input-group input {
+  width: 100%; padding: 0.8rem; border-radius: 6px;
+  background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
+  color: white; outline: none; transition: 0.3s;
+}
+.input-group input:focus { border-color: var(--gold-primary); }
+.toggle-text { margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-muted); }
+.toggle-text a { color: var(--gold-primary); font-weight: bold; text-decoration: underline; }
+.back-link { margin-top: 1.5rem; font-size: 0.9rem; }
+.back-link a { color: var(--text-muted); transition: 0.3s; }
+.back-link a:hover { color: white; }

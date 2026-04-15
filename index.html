@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Barber Shop - أحدث صالون حلاقة رجالي وأطفال الفاخرة">
+    <title>Smart Barber Shop | صالون سمارت للحلاقة</title>
+    <!-- خطوط جوجل لمظهر عصري وفخم -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div id="page-loader" class="loader-wrapper">
+        <div class="loader">
+            <span class="loader-text">Smart Barber...</span>
+        </div>
+    </div>
+
+    <!-- القائمة العلوية -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">Smart<span>Barber</span></div>
+            <ul class="nav-links">
+                <li><a href="#hero" data-i18n="nav_home">الرئيسية</a></li>
+                <li><a href="#face-shape" data-i18n="nav_advisor">مستشار القصات</a></li>
+                <li><a href="#trends" data-i18n="nav_trends">أحدث الصيحات</a></li>
+                <li><a href="#packages" data-i18n="nav_packages">الباقات</a></li>
+            </ul>
+            <div class="nav-actions">
+                <span id="user-greeting" style="display:none;">مرحباً، <span id="user-name-display"></span></span>
+                <button id="logout-btn" class="btn btn-outline btn-sm" style="display:none;" data-i18n="nav_logout">تسجيل الخروج</button>
+                <a href="login.html" id="login-link" class="btn btn-outline btn-sm" data-i18n="nav_login">تسجيل الدخول</a>
+                <button id="lang-btn" class="btn-icon">EN</button>
+                <div class="cart-wrapper">
+                    <button id="cart-btn" class="btn-icon">🛒 <span id="cart-count" class="badge-count">0</span></button>
+                </div>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي (البداية) -->
+    <section id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 data-i18n="hero_title">الأناقة تبدأ <span>من هنا</span></h1>
+            <p data-i18n="hero_desc">اكتشف القصة المثالية لشكل وجهك وأحدث الموديلات في عالم حلاقة الرجال والأطفال. خدمات فاخرة وأجواء
+                استثنائية بانتظارك.</p>
+            <div class="d-flex gap-1" style="justify-content: center;">
+                <a href="#face-shape" class="btn btn-primary" data-i18n="hero_btn">اكتشف قصتك المناسبة</a>
+                <button id="hero-book-btn" class="btn btn-outline" style="color: white; border-color: white;" data-i18n="btn_book">احجز موعدك</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم مستشار شكل الوجه -->
+    <section id="face-shape" class="section face-shape-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="face_shape_title">مستشار القصات الذكي</h2>
+            <p class="section-subtitle" data-i18n="face_shape_sub">اختر شكل وجهك ودعنا نقترح لك القصة التي تبرز ملامحك بأفضل شكل.</p>
+
+            <div class="shape-buttons" id="shapeFilters">
+                <button class="shape-btn" data-shape="round" data-i18n="shape_round">وجه دائري</button>
+                <button class="shape-btn" data-shape="square" data-i18n="shape_square">وجه مربع</button>
+                <button class="shape-btn" data-shape="oval" data-i18n="shape_oval">وجه بيضاوي</button>
+            </div>
+
+            <!-- الأشكال ستعرض هنا عبر جافاسكريبت -->
+            <div class="results-grid" id="suggesterResults">
+                <!-- Data populated dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم أحدث صيحات الحلاقة -->
+    <section id="trends" class="section trends-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="trends_title">أحدث صيحات الحلاقة 2026</h2>
+            <p class="section-subtitle" data-i18n="trends_sub">تصفح أبرز الاتجاهات العصرية في عالم الشعر واللحية.</p>
+            <div class="trends-grid" id="trendsGrid">
+                <!-- Trends injected here via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الباقات والخدمات -->
+    <section id="packages" class="section packages-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="packages_title">باقات العناية المميزة</h2>
+            
+            <div class="packages-grid">
+                <!-- باقة الأطفال -->
+                <div class="package-card glass-effect" data-id="pkg-kids">
+                    <div class="package-icon">👦</div>
+                    <h3 data-i18n="pkg_kids_title">باقة الأطفال (Kids Area)</h3>
+                    <div class="package-price">50<span> ر.س</span></div>
+                    <ul class="package-features">
+                        <li data-i18n="pkg_kids_f1">قص شعر عصري يناسب عمر الطفل</li>
+                        <li data-i18n="pkg_kids_f2">بيئة ترفيهية ومريحة</li>
+                        <li data-i18n="pkg_kids_f3">تعقيم ورعاية خاصة</li>
+                    </ul>
+                    <div class="d-flex gap-1 w-100">
+                        <button class="btn btn-outline flex-1 open-details-btn" data-i18n="btn_details">التفاصيل</button>
+                        <button class="btn btn-primary flex-1 add-to-cart-btn" data-i18n="btn_add_cart">أضف للسلة</button>
+                    </div>
+                </div>
+
+                <!-- باكدج العريس -->
+                <div class="package-card featured glass-effect" data-id="pkg-vip">
+                    <div class="badge" data-i18n="badge_popular">الأكثر طلباً</div>
+                    <div class="package-icon">👑</div>
+                    <h3 data-i18n="pkg_vip_title">باكدج العريس الفاخر</h3>
+                    <div class="package-price">350<span> ر.س</span></div>
+                    <ul class="package-features">
+                        <li data-i18n="pkg_vip_f1">حلاقة VIP وتحديد دقيق</li>
+                        <li data-i18n="pkg_vip_f2">العناية بالبشرة (Skin Care) وماسك</li>
+                        <li data-i18n="pkg_vip_f3">العناية بالشعر (Hair Care) وبخار</li>
+                        <li data-i18n="pkg_vip_f4">العناية باللحية (Beard Care)</li>
+                        <li data-i18n="pkg_vip_f5">تصفيف الشعر والتثبيت</li>
+                    </ul>
+                    <div class="d-flex gap-1 w-100">
+                        <button class="btn btn-outline flex-1 open-details-btn" data-i18n="btn_details">التفاصيل</button>
+                        <button class="btn btn-primary flex-1 add-to-cart-btn" data-i18n="btn_add_cart">أضف للسلة</button>
+                    </div>
+                </div>
+
+                <!-- الباقة الكلاسيكية -->
+                <div class="package-card glass-effect" data-id="pkg-classic">
+                    <div class="package-icon">👨</div>
+                    <h3 data-i18n="pkg_classic_title">الباقة الكلاسيكية</h3>
+                    <div class="package-price">80<span> ر.س</span></div>
+                    <ul class="package-features">
+                        <li data-i18n="pkg_classic_f1">قص وتدريج الشعر الأساسي</li>
+                        <li data-i18n="pkg_classic_f2">حلاقة الذقن بالماكينة أو الموس</li>
+                        <li data-i18n="pkg_classic_f3">غسيل الشعر وتنشيفه</li>
+                    </ul>
+                    <div class="d-flex gap-1 w-100">
+                        <button class="btn btn-outline flex-1 open-details-btn" data-i18n="btn_details">التفاصيل</button>
+                        <button class="btn btn-primary flex-1 add-to-cart-btn" data-i18n="btn_add_cart">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات الإضافية (Skin, Hair, Beard & Cafe) -->
+    <section id="extra-services" class="section extra-services-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="extra_services_title">خدمات ضيافة وعناية إضافية</h2>
+            <p class="section-subtitle" data-i18n="extra_services_sub">نقدم لك أكثر من مجرد حلاقة... تجربة راقية متكاملة.</p>
+            
+            <div class="services-row">
+                <!-- قسم الكافيه -->
+                <div class="service-banner cafe-banner glass-effect">
+                    <div class="service-content">
+                        <h3 data-i18n="cafe_title">☕ قسم الكافيه (Cafe Section)</h3>
+                        <p data-i18n="cafe_desc">استمتع بقهوتك المفضلة ومشروباتك المنعشة أثناء انتظارك أو بعد الحلاقة.</p>
+                    </div>
+                </div>
+
+                <!-- قسم العناية المتخصصة -->
+                <div class="service-banner care-banner glass-effect">
+                    <div class="service-content">
+                        <h3 data-i18n="care_title">🌿 العناية المتخصصة</h3>
+                        <p data-i18n="care_desc">عناية متقدمة للبشرة (Skin)، الشعر (Hair)، واللحية (Beard) بمنتجات عالمية فاخرة.</p>
+                    </div>
+                </div>
+
+                <!-- قسم المساج والسبا -->
+                <div class="service-banner spa-banner glass-effect">
+                    <div class="service-content">
+                        <h3 data-i18n="spa_title">💆 مساج وسبا (Spa Area)</h3>
+                        <p data-i18n="spa_desc">استرخِ في قسم المساج المجهز بأفضل تقنيات الاسترخاء.</p>
+                    </div>
+                </div>
+
+                <!-- قسم غرف VIP -->
+                <div class="service-banner vip-banner glass-effect">
+                    <div class="service-content">
+                        <h3 data-i18n="vip_title">🌟 غرف VIP خاصة</h3>
+                        <p data-i18n="vip_desc">استمتع بخصوصيتك التامة وحلاقة فاخرة جداً في قسم كبار الشخصيات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/966500000000" class="whatsapp-float" target="_blank" id="whatsapp-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.002 1.018.265 2.012.775 2.885l-1.013 3.694 3.784-.991a5.72 5.72 0 0 0 2.222.457h.002c3.18 0 5.767-2.585 5.767-5.765s-2.586-5.766-5.767-5.766zm3.435 8.169c-.188.529-.623 1.01-1.096 1.134-.431.111-1.026.155-3.036-.677-2.427-1.006-4.004-3.528-4.125-3.69-.121-.162-.986-1.312-.986-2.505 0-1.194.619-1.78.84-2.022.221-.242.482-.303.643-.303.161 0 .323.003.465.008.151.006.353-.059.542.4.191.464.654 1.597.714 1.718.06.121.101.263.02.424-.081.162-.121.263-.242.404-.121.141-.253.303-.364.404-.121.121-.248.256-.111.495.137.239.61 1.012 1.311 1.636.906.804 1.666 1.054 1.907 1.176.241.121.383.101.524-.06.141-.162.614-.72.775-.968.161-.249.324-.207.545-.121.221.085 1.407.665 1.648.786.241.121.402.181.462.282.06.101.06.586-.128 1.115z" />
+            <path d="M12.031 2c-5.514 0-10 4.486-10 10 0 1.761.455 3.473 1.32 5l-1.35 4.928 5.034-1.32c1.479.803 3.161 1.227 4.887 1.227h.002c5.514 0 10-4.486 10-10s-4.486-10-10-10zm0 18.238c-1.554 0-3.078-.415-4.412-1.205l-.316-.188-3.284.861.879-3.2-.206-.328a8.213 8.213 0 0 1-1.258-4.436c0-4.545 3.698-8.243 8.244-8.243s8.245 3.698 8.245 8.243-3.698 8.244-8.244 8.244z" />
+        </svg>
+    </a>
+
+    <!-- سلة المشتريات (Cart Sidebar) -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3 data-i18n="cart_title">سلة المشتريات</h3>
+            <button id="close-cart" class="close-btn">&times;</button>
+        </div>
+        <div class="cart-body" id="cart-items">
+            <!-- سيتم إضافة العناصر هنا عبر جافاسكريبت -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-i18n="cart_total">الإجمالي:</span>
+                <span id="cart-total-price">0 ر.س</span>
+            </div>
+            <button class="btn btn-primary w-100" data-i18n="cart_checkout">إتمام الطلب</button>
+        </div>
+    </div>
+
+    <!-- نافذة منبثقة لتفاصيل الباقة (Modal) -->
+    <div id="package-modal" class="modal-overlay">
+        <div class="modal-content glass-effect">
+            <button class="close-modal">&times;</button>
+            <div id="modal-body-content">
+                <!-- Data populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة منبثقة لحجز موعد (Booking Modal) -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-content glass-effect" style="text-align: right; direction: rtl;">
+            <button class="close-modal" id="close-booking">&times;</button>
+            <div id="booking-form-container">
+                <h3 style="color:var(--gold-primary); margin-bottom: 20px; text-align: center;" data-i18n="btn_book">احجز موعدك</h3>
+                <div class="input-group" style="text-align: right;">
+                    <label style="display:block; margin-bottom: 5px;">الاسم</label>
+                    <input type="text" id="book-name" placeholder="أدخل اسمك" required>
+                </div>
+                <div class="input-group" style="text-align: right;">
+                    <label style="display:block; margin-bottom: 5px;">تاريخ الموعد</label>
+                    <input type="date" id="book-date" required>
+                </div>
+                <div class="input-group" style="text-align: right;">
+                    <label style="display:block; margin-bottom: 5px;">الوقت</label>
+                    <input type="time" id="book-time" required>
+                </div>
+                <button id="submit-booking-btn" class="btn btn-primary w-100" style="margin-top: 15px;" data-i18n="btn_book">تأكيد الحجز</button>
+            </div>
+            <div id="booking-manage-container" style="display:none; text-align: center;">
+                <h3 style="color:var(--gold-primary); margin-bottom: 20px;">حجزك الحالي</h3>
+                <p id="booking-details-text" style="margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8;"></p>
+                <button id="cancel-booking-btn" class="btn btn-outline w-100" style="border-color: red; color: red;" data-i18n="btn_cancel">إلغاء الحجز</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة عرض الصور (Lightbox) -->
+    <div id="image-lightbox" class="modal-overlay" style="z-index: 10000; display: none;">
+        <span class="close-lightbox" id="close-lightbox" style="position: absolute; top: 20px; right: 30px; font-size: 40px; color: white; cursor: pointer; transition: color 0.3s;">&times;</span>
+        <img id="lightbox-img" src="" alt="Fullscreen image" style="max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Smart<span>Barber</span></div>
+            <p data-i18n="footer_rights">© 2026 جميع الحقوق محفوظة لصالون سمارت باربر للحلاقة الفاخرة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
